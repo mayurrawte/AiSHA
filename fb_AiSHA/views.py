@@ -9,7 +9,7 @@ from django.views import generic
 
 class AiSHAView(generic.View):
     def get(self, request, *args, **kwargs):
-        if self.request.GET['hub.verify_token'] == '45757815635947892':
+        if self.request.GET['hub.verify_token'] == '2318934571':
             return HttpResponse(self.request.GET['hub.challenge'])
         else:
-            return HttpResponse("Error, invalid token")
+            return HttpResponse('Error, invalid token')
