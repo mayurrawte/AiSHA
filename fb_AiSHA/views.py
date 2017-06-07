@@ -39,6 +39,7 @@ class AiSHAView(generic.View):
                     pprint(message)
                     obj = open('test.txt','w+')
                     obj.write(str(message))
+                    post_facebook_message(message['sender']['id'], message['message']['text'])
         return HttpResponse()
 
 def post_facebook_message(fbid, recevied_message):
