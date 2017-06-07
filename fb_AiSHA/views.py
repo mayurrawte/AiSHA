@@ -39,7 +39,7 @@ class AiSHAView(generic.View):
                     pprint(message)
                     obj = open('test.txt','w+')
                     obj.write(str(message))
-                    if message['message']['text']:
+                    if 'text' in message['message']:
                         post_facebook_message(message['sender']['id'], message['message']['text'], 1)
                     else:
                         post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
