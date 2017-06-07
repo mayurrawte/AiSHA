@@ -36,6 +36,6 @@ class AiSHAView(generic.View):
                 if 'message' in message:
                     # Print the message to the terminal
                     pprint(message)
-                    obj = open('test.txt')
+                    obj = open('test.txt','w+')
                     obj.write(message)
         return HttpResponse()
