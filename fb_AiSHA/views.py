@@ -39,11 +39,17 @@ class AiSHAView(generic.View):
                     pprint(message)
                     obj = open('test.txt','w+')
                     obj.write(str(message))
-                    post_facebook_message(message['sender']['id'], message['message']['text'])
+                    if message['message']['text']:
+                        post_facebook_message(message['sender']['id'], message['message']['text'], 1)
+                    else:
+                        post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
         return HttpResponse()
 
-def post_facebook_message(fbid, recevied_message):
+def post_facebook_message(fbid, recevied_message,mtype):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAX6eV8ysK8BAErZBKZA2JTQ81tXjA8bxFln7hedwhh5TIjfGcK0CkUfduJljoCzjl8mugnBSKCFBKZCZBSnsvBFokSIjRx1affPJOmW2vtBtoj17ixjUo0gSRk0YKVBhwzEwJhJ5eQ5Gquw9TfqhQZCI7JFU5GuqtnJSkt7wowZDZD'
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":recevied_message}})
+    if mtype == 1:
+        response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":recevied_message}})
+    elif mtype == 2:
+        response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"attachments": recevied_message}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
