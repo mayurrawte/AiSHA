@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from . import AiSHABot
 import json
 import requests
 from pprint import pprint
@@ -11,10 +11,7 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-from chatterbot import ChatBot
 
-AiSHA = ChatBot('AiSHA',trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
-AiSHA.train("chatterbot.corpus.english")
 
 
 
@@ -46,7 +43,7 @@ class AiSHAView(generic.View):
                     obj.write(str(message))
 
                     if 'text' in message['message']:
-                        reply = AiSHA.get_response(message)
+                        reply = AiSHABot.get_response(message)
                         post_facebook_message(message['sender']['id'], reply, 1)
                     else:
                         post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
