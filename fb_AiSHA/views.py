@@ -48,8 +48,8 @@ class AiSHAView(generic.View):
 def post_facebook_message(fbid, recevied_message,mtype):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAX6eV8ysK8BAErZBKZA2JTQ81tXjA8bxFln7hedwhh5TIjfGcK0CkUfduJljoCzjl8mugnBSKCFBKZCZBSnsvBFokSIjRx1affPJOmW2vtBtoj17ixjUo0gSRk0YKVBhwzEwJhJ5eQ5Gquw9TfqhQZCI7JFU5GuqtnJSkt7wowZDZD'
     if mtype == 1:
-        response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":recevied_message}})
+        response_msg = json.dumps({"recipient":{"id":fbid}, "message": {"text":recevied_message}})
     elif mtype == 2:
-        response_msg = json.dumps({"recipient": {"id": fbid}, "message": {"attachments":[{"type": "image", "payload":{"url":"https://scontent.xx.fbcdn.net/v/t39.1997-6/p100x100/851587_369239346556147_162929011_n.png?_nc_ad=z-m&oh=ad2a1e37edd885afb4acd987ad8e33c6&oe=59DEDBB0"}}]}})
+        response_msg = json.dumps({"message": {"attachment": {"type": "image", "payload": {"url": "https://scontent.xx.fbcdn.net/v/t39.1997-6/p100x100/851587_369239346556147_162929011_n.png?_nc_ad=z-m&oh=ad2a1e37edd885afb4acd987ad8e33c6&oe=59DEDBB0"}}}, "recipient": {"id": "1346441788784848"}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
