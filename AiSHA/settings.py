@@ -48,7 +48,7 @@ CHATTERBOT = {
     'training_data': [
         'chatterbot.corpus.english.greetings',
         'chatterbot.corpus.english.conversations',
-        'chatterbot.corpus.english.emotion'
+        'chatterbot.corpus.english.emotion',
 
     ],
     'django_app_name': 'AiSHA'
