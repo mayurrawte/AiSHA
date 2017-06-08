@@ -41,6 +41,19 @@ INSTALLED_APPS = [
     'chatterbot.ext.django_chatterbot',
 ]
 
+
+CHATTERBOT = {
+    'name': 'AiSHA',
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+        'chatterbot.corpus.english.greetings',
+        'chatterbot.corpus.english.conversations',
+        'chatterbot.corpus.english.emotion'
+
+    ],
+    'django_app_name': 'AiSHA'
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
