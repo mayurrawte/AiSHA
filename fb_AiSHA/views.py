@@ -11,6 +11,11 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
+from chatterbot import ChatBot
+
+AiSHA = ChatBot('AiSHA',trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
+AiSHA.train("chatterbot.corpus.english")
+
 
 
 class AiSHAView(generic.View):
@@ -39,8 +44,10 @@ class AiSHAView(generic.View):
                     pprint(message)
                     obj = open('test.txt','w+')
                     obj.write(str(message))
+
                     if 'text' in message['message']:
-                        post_facebook_message(message['sender']['id'], message['message']['text'], 1)
+                        reply = AiSHA.get_response(message)
+                        post_facebook_message(message['sender']['id'], reply, 1)
                     else:
                         post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
         return HttpResponse()
