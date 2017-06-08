@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fb_AiSHA.apps.FbAishaConfig',
+    'chatterbot.ext.django_chatterbot',
 ]
 
 MIDDLEWARE = [
