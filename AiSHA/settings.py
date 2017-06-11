@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(#4mg-u+g5=i1q753)obg^ewwx7#f-*sk(k4a%2(+1&$xu)@7#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,21 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fb_AiSHA.apps.FbAishaConfig',
-    'chatterbot.ext.django_chatterbot',
 ]
 
-
-CHATTERBOT = {
-    'name': 'AiSHA',
-    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
-    'training_data': [
-        'chatterbot.corpus.english.greetings',
-        'chatterbot.corpus.english.conversations',
-        'chatterbot.corpus.english.emotion',
-
-    ],
-    'django_app_name': 'AiSHA'
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

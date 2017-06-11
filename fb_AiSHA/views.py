@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import json
 import requests
 from pprint import pprint
-from . import aishabot
+
 from django.utils.datastructures import MultiValueDictKeyError
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -42,8 +42,7 @@ class AiSHAView(generic.View):
                     obj.write(str(message))
 
                     if 'text' in message['message']:
-                        reply = aishabot.AiSHAbot.get_response(message)
-                        post_facebook_message(message['sender']['id'], reply, 1)
+                        post_facebook_message(message['sender']['id'], message['message']['text'], 1)
                     else:
                         post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
         return HttpResponse()
