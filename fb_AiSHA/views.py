@@ -16,7 +16,7 @@ import apiai
 apiaitoken = '8869181575044c7ba1b6b194087c4dc9'
 ai = apiai.ApiAI(apiaitoken)
 airequest = ai.text_request()
-airequest.session_id = 'uniqueuser123'
+airequest.session_id = 'testuser123'
 
 
 class AiSHAView(generic.View):
@@ -48,10 +48,10 @@ class AiSHAView(generic.View):
 
                     if 'text' in message['message']:
                         airequest.query = message['message']['text']
-			airesponse = airequest.getresponse()
-			airesponsetext = json.loads(airesponse)['result']['fulfillment']['messages'][0]['speech']
-			#post_facebook_message(message['sender']['id'], message['message']['text'], 1)
-			post_facebook_message(message['sender']['id'], airesponsetext, 1)
+                        airesponse = airequest.getresponse()
+                        airesponsetext = json.loads(airesponse)['result']['fulfillment']['messages'][0]['speech']
+                        #post_facebook_message(message['sender']['id'], message['message']['text'], 1)
+                        post_facebook_message(message['sender']['id'], airesponsetext, 1)
                     else:
                         post_facebook_message(message['sender']['id'], message['message']['attachments'], 2)
         return HttpResponse()
