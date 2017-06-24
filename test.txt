@@ -1,1 +1,1 @@
-{u'timestamp': 1497936408561, u'message': {u'text': u'Hello', u'mid': u'mid.$cAAIGcPiKQAdi9Tz38Vcw_ei9rcpC', u'seq': 9}, u'recipient': {u'id': u'664682363739041'}, u'sender': {u'id': u'1325431357574988'}}
+{u'timestamp': 1498292514539, u'message': {u'text': u'how are you', u'mid': u'mid.$cAAIGdRm3kFpjCna261c2TFtCfHip', u'seq': 27419}, u'recipient': {u'id': u'664682363739041'}, u'sender': {u'id': u'1346441788784848'}}
