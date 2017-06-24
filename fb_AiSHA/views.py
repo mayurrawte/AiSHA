@@ -10,7 +10,6 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-
 import apiai
 
 apiaitoken = '8869181575044c7ba1b6b194087c4dc9'
@@ -43,13 +42,13 @@ class AiSHAView(generic.View):
                 if 'message' in message:
                     # Print the message to the terminal
                     pprint(message)
-                    obj = open('test.txt','w+')
+                    obj = open('test.txt', 'w+')
                     obj.write(str(message))
 
                     if 'text' in message['message']:
                         airequest.query = message['message']['text']
                         airesponse = airequest.getresponse()
-                        airesponsetext = json.loads(airesponse)['result']['fulfillment']['messages'][0]['speech']
+                        airesponsetext = json.loads(airesponse.read())['result']['fulfillment']['messages'][0]['speech']
                         #post_facebook_message(message['sender']['id'], message['message']['text'], 1)
                         post_facebook_message(message['sender']['id'], airesponsetext, 1)
                     else:
