@@ -56,7 +56,7 @@ class AiSHAView(generic.View):
         return HttpResponse()
 
 def post_facebook_message(fbid, recevied_message,mtype):
-    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAX6eV8ysK8BAErZBKZA2JTQ81tXjA8bxFln7hedwhh5TIjfGcK0CkUfduJljoCzjl8mugnBSKCFBKZCZBSnsvBFokSIjRx1affPJOmW2vtBtoj17ixjUo0gSRk0YKVBhwzEwJhJ5eQ5Gquw9TfqhQZCI7JFU5GuqtnJSkt7wowZDZD'
+    post_message_url = 'https://graph.facebook.com/v2.9/me/messages?access_token=EAATpRWW0h8gBALetLjtIquXPRtrZBxwNOTUrJh2OPZB4o0DCAZBb1e3kpnYJzSqXrweXSzMSKf3YJXvXKeAoE4mJdZBwvLyAkoHZBmONLtUosKLIxLumSHEwdN26yZCT6wsf6WEgIPZCQDA8Lejnz0WzDRdiDlbcyFjMBZCwLZCcTZBgZDZD'
     if mtype == 1:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message": {"text":recevied_message}})
     elif mtype == 2:
