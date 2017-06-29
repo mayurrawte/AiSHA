@@ -14,8 +14,7 @@ import apiai
 
 apiaitoken = '8869181575044c7ba1b6b194087c4dc9'
 ai = apiai.ApiAI(apiaitoken)
-airequest = ai.text_request()
-airequest.session_id = 'testuser123'
+
 
 
 class AiSHAView(generic.View):
@@ -46,6 +45,8 @@ class AiSHAView(generic.View):
                     obj.write(str(message))
 
                     if 'text' in message['message']:
+                        airequest = ai.text_request()
+                        airequest.session_id = message['sender']['id']
                         airequest.query = message['message']['text']
                         airesponse = airequest.getresponse()
                         airesponsetext = json.loads(airesponse.read())['result']['fulfillment']['messages'][0]['speech']
