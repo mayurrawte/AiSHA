@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from fb_AiSHA.views import privacy
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^fb_AiSHA/',include('fb_AiSHA.urls')),
+    url(r'^privacy/', privacy)
 
 ]
